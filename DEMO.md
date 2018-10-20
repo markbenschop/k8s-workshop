@@ -16,7 +16,7 @@ Create a working directory called workshop and cd into it.
 
 Clone de k8s-workshop git repository
 
-    git clone http://dhcp-scope-karc-001.int-prod.rws.nl:8080/benschopm/k8s-workshop. 
+    git clone https://github.com/markbenschop/k8s-workshop.git
 
 The workshop excercises we are going to do are in DEMO.md
 
