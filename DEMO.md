@@ -2,9 +2,9 @@
 
 # Preparation
 ## Network
-Create a hostfile entry 
+Create a hostfile entry with the ip I will give you.
 
-    1.2.3.3. traefik.demo.intern ${je naam}.demo.intern
+    1.2.3.3 traefik.demo.intern ${je naam}.demo.intern
 
 Configure your browser so that '.demo.intern' is accessed not via a proxyserver.
 
@@ -21,7 +21,7 @@ Clone de k8s-workshop git repository
 The workshop excercises we are going to do are in DEMO.md
 
 
-Create a directory where you manage the files you create and make it a git repo so you can save working versions.
+Create another directory where you manage the files you create and make it a git repo so you can save working versions.
 
     mkdir files
     cd files
