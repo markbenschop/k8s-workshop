@@ -29,3 +29,7 @@ Use the default grafana user:password of admin:admin
 
    git clone https://github.com/containous/traefik.git
 
+kubernetes examples :
+https://github.com/containous/traefik/tree/master/examples/k8s
+
+
