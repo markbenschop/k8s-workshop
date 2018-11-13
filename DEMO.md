@@ -8,7 +8,17 @@ Create a hostfile entry with the ip I will give you.
 
     1.2.3.3 traefik.demo.proxy ${je naam}.demo.proxy
 
-Configure your browser so that '.demo.intern' is accessed not via a proxyserver.
+If you access the demo environment via a proxy server configure your browser so 
+that the '.demo.proxy' domain is not accessed via a proxyserver.
+
+
+## Setup kubectl
+To connect to k8s you need access to the api. 
+
+## Install kubectl
+You need to install kubectl, a go binary.
+
+https://kubernetes.io/docs/tasks/tools/install-kubectl/
 
 ## Work directory
 We are going to create k8s config files and apply them.
@@ -20,15 +30,6 @@ Create a working directory called workshop and cd into it.
 Maybe use git to save your work ?
 
     git init
-
-
-# Setup kubectl
-To connect to k8s you need access to the api. 
-
-## Install kubectl
-You need to install kubectl, a go binary.
-
-https://kubernetes.io/docs/tasks/tools/install-kubectl/
 
 ## Create configuration file 
 To get access to the demo api you need some settings.
@@ -50,6 +51,7 @@ You will be typing 'kubectl' many times. Make a short little alias maybe ?
 
     alias k=kubectl
 
+That's it for the preparation.
 
 # Create your own namespace
 We are going to work with multiple people on a single k8s cluster. 
