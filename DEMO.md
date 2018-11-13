@@ -92,13 +92,9 @@ Check if your context is set with
     kubectl config get-context demo 
 
 # Deploy demo app
-We are going to work with an app that's called flask-demo.
-Clone this git repository
+We are going to work with an app that's called flask-demo. It is a great app that's going viral soon. 
+And you were the first to deploy it ! How cool is that ?
 
-    git clone https://github.com/markbenschop/flask-demo.git
-
-In the flask-demo/k8s directory there are example files you can copy and use as an example.
-The files are also in this document.
 
 ## Create configmap
 Create configmap.yaml from flask-demo/k8s/10-configmap.yaml
@@ -409,3 +405,7 @@ Flux will monitor the git repo at {fill in url to repo }. Whenever yaml files ar
 We will demonstrate by merging a branch that contains ivsnext with master.
 
 
+# Sources
+The beautifull flask-demo application :
+
+[https://github.com/markbenschop/flask-demo.git]
