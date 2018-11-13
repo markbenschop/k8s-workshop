@@ -31,6 +31,7 @@ Maybe use git to save your work ?
 
     git init
 
+
 ## Create configuration file 
 To get access to the demo api you need some settings.
 
@@ -83,6 +84,7 @@ Liste namespaces  with
     kubectl get ns
 
 From now on you will work in your own namespace. To prevent from having to add '-n <your-name-here>' to every kubectl command :
+
     kubectl config set-context demo --namespace=<your_name_here>
 
 Check if your context is set with
