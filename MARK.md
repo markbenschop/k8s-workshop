@@ -32,4 +32,4 @@ Use the default grafana user:password of admin:admin
 kubernetes examples :
 https://github.com/containous/traefik/tree/master/examples/k8s
 
-
+https://github.com/Zenika/traefik-gke-demo

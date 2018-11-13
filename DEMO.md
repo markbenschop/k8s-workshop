@@ -67,7 +67,7 @@ or the short version
     kubectl get ns
 
 
-Create a namespace which has your own name. Do this by creating namespace.yml.
+Create a namespace which has your own name. Do this by creating 00-namespace.yml.
 
     ---
     apiVersion: v1
@@ -77,7 +77,7 @@ Create a namespace which has your own name. Do this by creating namespace.yml.
 
 Apply the namespace :
 
-    kubectl apply -f namespace.yaml
+    kubectl apply -f 00-namespace.yaml
 
 Liste namespaces  with
 
@@ -85,11 +85,13 @@ Liste namespaces  with
 
 From now on you will work in your own namespace. To prevent from having to add '-n <your-name-here>' to every kubectl command :
 
-    kubectl config set-context demo --namespace=<your_name_here>
+    kubectl config get-contexts
+
+    kubectl config set-context <our context> --namespace=<your_name_here>
 
 Check if your context is set with
 
-    kubectl config get-context demo 
+    kubectl config get-context <our context>
 
 # Deploy demo app
 We are going to work with an app that's called flask-demo. It is a great app that's going viral soon. 
@@ -97,10 +99,9 @@ And you were the first to deploy it ! How cool is that ?
 
 
 ## Create configmap
-Create configmap.yaml from flask-demo/k8s/10-configmap.yaml
-
 A configmap is just that a configuration map. We can put all kinds of thing inside a map.
 It can contain environment variables for the container or a complete configuration file that is mapped into a container.
+Create 01-configmap.yml with contents :
 
     ---
     apiVersion: v1
@@ -110,15 +111,16 @@ It can contain environment variables for the container or a complete configurati
     data:
       NAME: MARK
 
+    kubeclt apply -f 01-configmap.yml 
 
 ## Create service 
-Create service.yaml from example flask-demo/k8s/20-service.yaml
-
 A service is needed for pods to communicate with each other. So pods never directly talk with each other. Traffic goes via the services.
 
 Note that a service and pods are linked by using labels and selectors.
 
 A deployment has a label. The service finds pods by using a selector that references the label of the pod.
+
+Create 02-service.yml
 
     ---
     kind: Service
@@ -134,10 +136,10 @@ A deployment has a label. The service finds pods by using a selector that refere
           port: 80
           targetPort: 5000
 
+    kubectl apply -f 02-service.yml
+
 
 ## Create deployment
-Create deployement.yaml from flask-demo/k8s/30-deployment.yaml.
-
 A deployment actually consists of several k8s components that can also be created seperately.
 
 The deployment component is created to bundle some often combined items together in a logical way.
@@ -145,6 +147,9 @@ The deployment component is created to bundle some often combined items together
 The parts are replication controller, selector, labels and containers.
 
 You can forget about the seperate parts really and treat the deployment as one object.
+
+Create 03-deployment.yml
+
 
     ---
     apiVersion: apps/v1
@@ -172,6 +177,8 @@ You can forget about the seperate parts really and treat the deployment as one o
             - configMapRef:
                 name: flask-demo-environment
           restartPolicy: Always
+
+    kubectl apply -f 03-deployment.yml
 
 
 ## Everything ok ?
