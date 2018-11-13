@@ -1,32 +1,25 @@
 # k8s demo op PKS
+The git repo is here :
+https://github.com/markbenschop/k8s-workshop.git
 
 # Preparation
 ## Network
 Create a hostfile entry with the ip I will give you.
 
-    1.2.3.3 traefik.demo.intern ${je naam}.demo.intern
+    1.2.3.3 traefik.demo.proxy ${je naam}.demo.proxy
 
 Configure your browser so that '.demo.intern' is accessed not via a proxyserver.
 
 ## Work directory
+We are going to create k8s config files and apply them.
 Create a working directory called workshop and cd into it.
 
     mkdir workdir
     cd workdir
 
-Clone de k8s-workshop git repository
+Maybe use git to save your work ?
 
-    git clone https://github.com/markbenschop/k8s-workshop.git
-
-The workshop excercises we are going to do are in DEMO.md
-
-
-Create another directory where you manage the files you create and make it a git repo so you can save working versions.
-
-    mkdir files
-    cd files
     git init
-    cd ..
 
 
 # Setup kubectl
@@ -59,7 +52,8 @@ You will be typing 'kubectl' many times. Make a short little alias maybe ?
 
 
 # Create your own namespace
-We are going to work with multiple people on a single k8s cluster. To stay out of each others way we are going to work in our own namespaces.
+We are going to work with multiple people on a single k8s cluster. 
+To stay out of each others way everyone is going to work in their own namespace.
 
 List current namespaces with :
 
