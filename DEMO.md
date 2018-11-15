@@ -111,6 +111,7 @@ Create 01-configmap.yml with contents :
     data:
       NAME: <your name here>
 
+Apply the configmap
 
     kubeclt apply -f 01-configmap.yml 
 
@@ -137,6 +138,7 @@ Create 02-service.yml
           port: 80
           targetPort: 5000
 
+Apply the service
 
     kubectl apply -f 02-service.yml
 
@@ -180,6 +182,7 @@ Create 03-deployment.yml
                 name: flask-demo-environment
           restartPolicy: Always
 
+Apply the deployment
 
     kubectl apply -f 03-deployment.yml
 
@@ -188,6 +191,9 @@ Create 03-deployment.yml
 Is the deployment running ?
 
     kubectl get pods
+
+
+# TODO from here
 
 
 # Expose flask-demo 
