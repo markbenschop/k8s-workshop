@@ -33,3 +33,5 @@ kubernetes examples :
 https://github.com/containous/traefik/tree/master/examples/k8s
 
 https://github.com/Zenika/traefik-gke-demo
+
+https://estl.tech/configuring-https-to-a-web-service-on-google-kubernetes-engine-2d71849520d

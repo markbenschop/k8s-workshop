@@ -6,7 +6,7 @@ https://github.com/markbenschop/k8s-workshop.git
 ## Network
 Create a hostfile entry with the ip I will give you.
 
-    1.2.3.3 traefik.demo.proxy ${je naam}.demo.proxy
+    1.2.3.3 traefik.demo ${je naam}.demo
 
 If you access the demo environment via a proxy server configure your browser so 
 that the '.demo.proxy' domain is not accessed via a proxyserver.
@@ -94,7 +94,7 @@ Check if your context is set with
     kubectl config get-context <our context>
 
 # Deploy demo app
-We are going to work with an app that's called flask-demo. It is a great app that's going viral soon. 
+We are going to work with an app that's called flask-demo. It is a great app that's going viral soon I am sure.
 And you were the first to deploy it ! How cool is that ?
 
 
@@ -109,7 +109,8 @@ Create 01-configmap.yml with contents :
     metadata:
       name: flask-demo-environment
     data:
-      NAME: MARK
+      NAME: <your name here>
+
 
     kubeclt apply -f 01-configmap.yml 
 
@@ -135,6 +136,7 @@ Create 02-service.yml
           protocol: TCP
           port: 80
           targetPort: 5000
+
 
     kubectl apply -f 02-service.yml
 
@@ -178,6 +180,7 @@ Create 03-deployment.yml
                 name: flask-demo-environment
           restartPolicy: Always
 
+
     kubectl apply -f 03-deployment.yml
 
 
@@ -215,7 +218,7 @@ So alter the portnumber into some unique number (between 30000 and 32000 !) when
       type: NodePort
 
 
-Now point your browser to http://${je naam}.demo.intern:30090
+Now point your browser to http://${je naam}.demo:<port number>
 
 
 ## Use a proper ingress controller
@@ -228,7 +231,7 @@ The ingress controller itself is exposed via a nodePort configuration. Normally 
 The ingress controller we are using is traefik.
 
 Open the url to traefik in your browser.
-[http://traefik.demo.intern:30080/dashboard/]
+[http://traefik.demo:30080/dashboard/]
 
 
 
