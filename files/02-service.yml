@@ -5,7 +5,7 @@ metadata:
   name: flask-demo-service
 spec:
   selector:
-    app: flask-demo
+    app: flask-demo-deployment
   ports:
     - name: flask
       protocol: TCP

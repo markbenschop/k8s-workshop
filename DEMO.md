@@ -107,7 +107,7 @@ Create 01-configmap.yml with contents :
     apiVersion: v1
     kind: ConfigMap
     metadata:
-      name: flask-demo-environment
+      name: flask-demo-configmap
     data:
       NAME: <your name here>
 
@@ -206,8 +206,7 @@ To expose pods we can create a service that uses a nodePort. This will open up t
 
 Note that a port number can only be used once on a node and everyone who is doing the workshop is creating a service.
 So alter the portnumber into some unique number (between 30000 and 32000 !) when you get an error like this :
-
-    The Service "flask-demo-external-service" is invalid: spec.ports[0].nodePort: Invalid value: 30090: provided port is already allocated
+The Service "flask-demo-external-service" is invalid: spec.ports[0].nodePort: Invalid value: 30090: provided port is already allocated
 
     ---
     kind: Service
@@ -220,7 +219,6 @@ So alter the portnumber into some unique number (between 30000 and 32000 !) when
       ports:
         - protocol: TCP
           port: 5000
-          nodePort: 30090
       type: NodePort
 
 
@@ -253,10 +251,10 @@ One of the advantages is that with an ingress controller we can expose services 
     metadata:
       name: my-flask-ingress
       annotations:
-        kubernetes.io/insgress.class: traefik
+        kubernetes.io/ingress.class: traefik
     spec:
       rules:
-        - host: mark.demo.intern
+        - host: mark.demo
           http:
             paths:
               - path: /
@@ -264,7 +262,7 @@ One of the advantages is that with an ingress controller we can expose services 
                   serviceName: flask-demo-service
                   servicePort: flask
 
-Now the app should be accessible at [http://je_naam.demo.intern:30080].
+Now the app should be accessible at [http://je_naam.demo:30080].
 
 Note that we now expose only one service on the / path. We could expose more services under a different path.
 
