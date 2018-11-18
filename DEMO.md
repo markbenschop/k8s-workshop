@@ -174,7 +174,7 @@ Create 03-deployment.yml
         spec:
           containers:
           - name: flask-demo-container
-            image: markbenschop/flask-demo:0.16
+            image: markbenschop/flask-demo:1.0
             ports:
             - containerPort: 5000
             envFrom:
@@ -285,11 +285,11 @@ Now you scale back to 5 replicas
 
 
 ## Upgrade pod version
-We can update a deployment in a few ways. Let's say we want to upgrade the image we use from 0.16 to 0.17.
+We can update a deployment in a few ways. Let's say we want to upgrade the image we use from 1.0 to 1.1.
 
 First way is via cli : 
 
-    kubectl set image deployment/flask-demo-deployment flask-demo-container=markbenschop/flask-demo:0.17
+    kubectl set image deployment/flask-demo-deployment flask-demo-container=markbenschop/flask-demo:1.1
 
 Second way is with edit which will put you in your default editor :
 
@@ -326,7 +326,7 @@ K8s can
         spec:
           containers:
           - name: flask-demo-container
-            image: markbenschop/flask-demo:0.16
+            image: markbenschop/flask-demo:1.0
             ports:
             - containerPort: 5000
             envFrom:
@@ -380,7 +380,7 @@ Have a look here :
         spec:
           containers:
           - name: flask-demo-container
-            image: markbenschop/flask-demo:0.16
+            image: markbenschop/flask-demo:1.0
             ports:
             - containerPort: 5000
             envFrom:
