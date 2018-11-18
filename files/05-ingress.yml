@@ -3,14 +3,14 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: my-flask-ingress
-    annotations:
-      kubernetes.io/ingress.class: traefik
-  spec:
-      rules:
-        - host: mark.demo
-          http:
-            paths:
-              - path: /
-                backend:
-                  serviceName: flask-demo-service
-                  servicePort: 80
+  annotations:
+     kubernetes.io/ingress.class: traefik
+spec:
+    rules:
+      - host: mark.demo
+        http:
+          paths:
+            - path: /
+              backend:
+                serviceName: flask-demo-service
+                servicePort: 80
