@@ -193,9 +193,6 @@ Is the deployment running ?
     kubectl get pods
 
 
-# TODO from here
-
-
 # Expose flask-demo 
 So now we have the flask-demo pods running. But we can not access them yet. And what't the point of having a nice app that we can't reach ?
 
@@ -263,11 +260,13 @@ One of the advantages is that with an ingress controller we can expose services 
 
 Now the app should be accessible at [http://je_naam.demo:30080].
 
+
 Note that we now expose only one service on the / path. We could expose more services under a different path.
 
 For experimentation create a different deployment and expose it on another path.
 
 You can copy the configmap, service and deployment we created earlier, give it different names, labels and selectors and change the NAME variable in the configmap and expose it under e.g. /other_service in this ingress rule.
+
 
 
 # Further experimentation with a deployment
@@ -284,6 +283,7 @@ Now let's scale out to 10 pods
 
 Now you scale back to 5 replicas
 
+
 ## Upgrade pod version
 We can update a deployment in a few ways. Let's say we want to upgrade the image we use from 0.16 to 0.17.
 
@@ -294,6 +294,7 @@ First way is via cli :
 Second way is with edit which will put you in your default editor :
 
     kubectl edit deployment/flask-demo-deployment
+
 
 ## Set livenessProbe
 K8s wants the pods in your deployment to run. So it checks that and if a pod crashes it starts another one.
