@@ -107,7 +107,7 @@ Create 01-configmap.yml with contents :
     apiVersion: v1
     kind: ConfigMap
     metadata:
-      name: flask-demo-configmap
+      name: flask-demo-environment
     data:
       NAME: <your name here>
 
@@ -200,8 +200,6 @@ Is the deployment running ?
 So now we have the flask-demo pods running. But we can not access them yet. And what't the point of having a nice app that we can't reach ?
 
 ## Create a nodePort service
-The simplest way to expose pods is by creating a service with a nodePort. Look at flask-demo/k8s/nodeport-service.yml for an example.
-
 To expose pods we can create a service that uses a nodePort. This will open up the specified portnumber on every node and route traffic to the service, which sends it to the pods with the labels that are specified in the selector.
 
 Note that a port number can only be used once on a node and everyone who is doing the workshop is creating a service.
@@ -219,6 +217,7 @@ The Service "flask-demo-external-service" is invalid: spec.ports[0].nodePort: In
       ports:
         - protocol: TCP
           port: 5000
+          nodePort: 30090  # Choose unique port here
       type: NodePort
 
 
@@ -240,7 +239,7 @@ Open the url to traefik in your browser.
 
 
 ## Create ingress rules
-We are going to create an ingress rule for url http://${je_naam}.demo.intern:30080 to your flask-demo deployment.
+We are going to create an ingress rule for url http://${je_naam}.demo:30080 to your flask-demo deployment.
 
 One of the advantages is that with an ingress controller we can expose services with virtual host like functionality.
 
@@ -260,7 +259,7 @@ One of the advantages is that with an ingress controller we can expose services 
               - path: /
                 backend:
                   serviceName: flask-demo-service
-                  servicePort: flask
+                  servicePort: 80
 
 Now the app should be accessible at [http://je_naam.demo:30080].
 
@@ -338,7 +337,7 @@ K8s can
                 port: 5000
               initialDelaySeconds: 10
               timeoutSeconds: 5
-    restartPolicy: Always
+          restartPolicy: Always
 
 
 ## Set resourceLimits
@@ -403,7 +402,7 @@ Have a look here :
                 port: 5000
               initialDelaySeconds: 10
               timeoutSeconds: 5
-    restartPolicy: Always
+          restartPolicy: Always
 
 # GitOps with flux
 We have been creating yaml files and applying them by hand with kubectl so far. In a production environment these files would be in a network accessable git repository so your team can work together on the configuration of your yaml files. Git is ideal for this since every change is recorded and revertable.
